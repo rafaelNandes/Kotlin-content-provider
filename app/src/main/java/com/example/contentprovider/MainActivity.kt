@@ -25,12 +25,13 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> 
         setContentView(R.layout.activity_main)
         noteAdd = findViewById(R.id.note_add)
         noteAdd.setOnClickListener{
-
+            NotesDetailFragment().show(supportFragmentManager, "dialog")
         }
         adapter = NotesAdapter(object : NoteClickedListener{
             override fun noteClickedItem(cursor: Cursor) {
                 val id = cursor.getLong(cursor.getColumnIndex(_ID))
-
+                val fragment = NotesDetailFragment.newInstance(id)
+                fragment.show(supportFragmentManager, "dialog")
             }
 
             override fun noteRemoveItem(cursor: Cursor?) {
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> 
         noteRecyclerView = findViewById(R.id.notes_recycler)
         noteRecyclerView.layoutManager = LinearLayoutManager(this)
         noteRecyclerView.adapter = adapter
+
+        LoaderManager.getInstance(this).initLoader(0, null, this)
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
@@ -50,11 +53,11 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> 
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         if(data != null){
-
+            adapter.setCursor(data)
         }
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapter.setCursor(null)
     }
 }
