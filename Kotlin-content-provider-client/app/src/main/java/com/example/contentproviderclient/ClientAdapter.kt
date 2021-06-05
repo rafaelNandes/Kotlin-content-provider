@@ -15,7 +15,7 @@ class ClientAdapter (private val mCursor: Cursor): RecyclerView.Adapter<ClientVi
         mCursor.moveToPosition(position)
         holder.clientTitle.text = mCursor.getString(mCursor.getColumnIndex("title"))
         holder.clientDescription.text = mCursor.getString(mCursor.getColumnIndex("description"))
-        
+
     }
 
     override fun getItemCount(): Int = mCursor.count
