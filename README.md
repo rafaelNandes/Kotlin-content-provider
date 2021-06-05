@@ -9,8 +9,11 @@
 - Android API 16
 
 - SQLite
+- RecycleView
 
+**Dependences:**
 
+- Material Design version 1.3.0
 
 **Orientations:**
 
