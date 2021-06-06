@@ -1,12 +1,12 @@
 # Content Provider
 
-**Content provider for sharing notes with other apps**
+**Creating a Content Provider app and a client app for sharing notes**
 
 
 
 **Features:**
 
-- Android API 16
+- Android API 16 (Tested in API 21 and API 30)
 
 - SQLite
 - RecycleView
@@ -17,7 +17,7 @@
 
 **Orientations:**
 
-In Content Provider Class I used the UnsupportedSchemeException which is available from Android API 18 onwards. So I used the notation @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2) in the methods.
+(Provider App) In Content Provider Class I used the UnsupportedSchemeException which is available from Android API 18 onwards. So I used the notation @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2) in the methods.
 
 
 
